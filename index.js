@@ -6,7 +6,7 @@ import * as cheerio from 'cheerio';
 app.get("/",(req,res)=>{
     res.json({
         data:null,
-        message:`please put imdb-id last of baseurl \n https://imdbscrapper-0d36f7277c05.herokuapp.com/tt7430722`
+        message:`please put imdb-id last of baseurl \n https://imdb-api.gokuthecoder.me/tt7430722`
     })
 })
 app.get("/:id", async (req, res) => {
