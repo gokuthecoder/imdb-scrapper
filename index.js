@@ -3,7 +3,12 @@ const app = express()
 import fetch from "node-fetch";
 import * as cheerio from 'cheerio';
 
-
+app.get("/",(req,res)=>{
+    res.json({
+        data:null,
+        message:`please put imdb-id last of baseurl \n https://imdbscrapper-0d36f7277c05.herokuapp.com/tt7430722`
+    })
+})
 app.get("/:id", async (req, res) => {
     const queryparams = req.params.id;
     try {
@@ -27,7 +32,6 @@ app.get("/:id", async (req, res) => {
         // Return JSON data
         res.json(jsonData);
     } catch (error) {
-        console.error(`Error found: ${error}`);
         res.status(500).json({ error: 'Internal Server Error' }); // Send an error response
     }
 });
@@ -35,6 +39,6 @@ app.get("/:id", async (req, res) => {
 
 
 
-app.listen(4000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server is running at port 4000")
 })
